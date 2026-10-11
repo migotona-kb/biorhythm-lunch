@@ -27,11 +27,25 @@ export function recommendFood(physical: number): string {
       "햄버거",
       "피자",
       "스테이크",
+
+      // 중국집
       "짜장면",
+      "간짜장",
       "짬뽕",
       "볶음밥",
-      "마라탕",
+      "잡채밥",
+      "마파두부덮밥",
+      "탕수육",
+      "유린기",
+
+      // 일식
+      "가츠동",
+      "규동",
       "카레",
+      "초밥",
+      "연어덮밥",
+
+      "마라탕",
       "비빔밥",
       "낙지볶음",
     ];
@@ -49,11 +63,25 @@ export function recommendFood(physical: number): string {
       "오징어볶음",
       "닭갈비",
       "김치볶음밥",
+
+      // 중국집
       "볶음밥",
       "짜장면",
+      "간짜장",
       "짬뽕",
+      "잡채밥",
+      "마파두부덮밥",
+
+      // 일식
       "돈까스",
       "카레",
+      "가츠동",
+      "규동",
+      "우동",
+      "메밀소바",
+      "초밥",
+      "연어덮밥",
+
       "오므라이스",
       "파스타",
       "햄버거",
@@ -66,7 +94,6 @@ export function recommendFood(physical: number): string {
       "설렁탕",
       "갈비탕",
       "육개장",
-      "초밥",
       "쌀국수",
     ];
   } else if (physical >= 0) {
@@ -99,8 +126,22 @@ export function recommendFood(physical: number): string {
       "샐러드",
       "포케",
       "파스타",
+
+      // 중국집
+      "볶음밥",
+      "잡채밥",
+      "마파두부덮밥",
+
+      // 일식
       "초밥",
       "회덮밥",
+      "우동",
+      "메밀소바",
+      "냉모밀",
+      "규동",
+      "연어덮밥",
+      "삼각김밥",
+
       "김치말이국수",
     ];
   } else if (physical >= -50) {
@@ -133,7 +174,14 @@ export function recommendFood(physical: number): string {
       "쌀국수",
       "월남쌈",
       "포케",
+
+      // 일식
+      "우동",
+      "메밀소바",
       "연어덮밥",
+      "삼각김밥",
+      "계란덮밥",
+
       "닭가슴살 샐러드",
       "야채수프",
     ];
@@ -170,6 +218,12 @@ export function recommendFood(physical: number): string {
       "닭가슴살 샐러드",
       "야채수프",
       "샌드위치",
+
+      // 일식
+      "우동",
+      "메밀소바",
+      "삼각김밥",
+      "계란덮밥",
     ];
   }
   const radomIndex = Math.floor(Math.random() * foods.length);

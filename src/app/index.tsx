@@ -1,8 +1,9 @@
 import { Caveat_700Bold, useFonts } from "@expo-google-fonts/caveat";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { View } from "react-native";
 import { LineChart } from "react-native-gifted-charts";
+import { Button, Card, Text, TextInput } from "react-native-paper";
 
 import { styles } from "@/styles/homeStyles";
 import { recommendFood } from "@/utils/recommendFood";
@@ -76,20 +77,20 @@ export default function HomeScreen() {
 
       physicalGraphData.push({
         value: physicalValue,
-        dataPointColor: i === 0 ? "red" : "black",
-        dataPointRadius: i === 0 ? 5 : 2,
+        dataPointColor: i === 0 ? "gray" : "black",
+        dataPointRadius: i === 0 ? 5 : 0,
       });
 
       emotionalGraphData.push({
         value: emotionalValue,
-        dataPointColor: i === 0 ? "red" : "black",
-        dataPointRadius: i === 0 ? 5 : 2,
+        dataPointColor: i === 0 ? "gray" : "black",
+        dataPointRadius: i === 0 ? 5 : 0,
       });
 
       intellectualGraphData.push({
         value: intellectualValue,
-        dataPointColor: i === 0 ? "red" : "black",
-        dataPointRadius: i === 0 ? 5 : 2,
+        dataPointColor: i === 0 ? "gray" : "black",
+        dataPointRadius: i === 0 ? 5 : 0,
       });
     }
 
@@ -107,48 +108,89 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Biorhythm Lunch V0.5</Text>
+      <Text variant="headlineMedium">Biorhythm Lunch v0.7</Text>
       <View style={styles.legend}>
         <Text style={{ color: "red" }}>● 신체</Text>
         <Text style={{ color: "green" }}>● 감성</Text>
         <Text style={{ color: "blue" }}>● 지성</Text>
       </View>
-      <LineChart
-        data={physicalData}
-        data2={emotionalData}
-        data3={intellectualData}
-        color1="red"
-        color2="green"
-        color3="blue"
-        spacing={23}
-        maxValue={100}
-        mostNegativeValue={-100}
-        noOfSections={5}
-        noOfSectionsBelowXAxis={5}
-        stepValue={20}
-        negativeStepValue={20}
-        height={90}
-      />
+      <Card mode="outlined" style={styles.chartCard}>
+        <Card.Content>
+          <LineChart
+            data={physicalData}
+            data2={emotionalData}
+            data3={intellectualData}
+            color1="red"
+            color2="green"
+            color3="blue"
+            spacing={23}
+            maxValue={100}
+            mostNegativeValue={-100}
+            noOfSections={5}
+            noOfSectionsBelowXAxis={5}
+            stepValue={20}
+            negativeStepValue={20}
+            height={90}
+            xAxisLength={300}
+            hideRules
+          />
+        </Card.Content>
+      </Card>
       <TextInput
         style={styles.input}
-        placeholder="생년월일 YYYYMMDD"
+        label="생년월일입력 YYYYMMDD"
         value={birthDate}
         onChangeText={setBirthDate}
         keyboardType="numeric"
         maxLength={8}
+        mode="outlined"
       />
-      <View>
-        <Text style={styles.message}>💪신체: {physical.toFixed(0)}%</Text>
-        <Text style={styles.message}>❤️감성: {emotional.toFixed(0)}%</Text>
-        <Text style={styles.message}>🧠지성: {intellectual.toFixed(0)}%</Text>
+      <View style={styles.statusRow}>
+        <Card style={styles.statusCard} mode="outlined">
+          <Card.Content>
+            <Text>신체</Text>
+            <Text style={styles.message}>{physical.toFixed(0)}%</Text>
+          </Card.Content>
+        </Card>
+        <Card style={styles.statusCard} mode="outlined">
+          <Card.Content>
+            <Text>감성</Text>
+            <Text style={styles.message}>{emotional.toFixed(0)}%</Text>
+          </Card.Content>
+        </Card>
+        <Card style={styles.statusCard} mode="outlined">
+          <Card.Content>
+            <Text>지성</Text>
+            <Text style={styles.message}>{intellectual.toFixed(0)}%</Text>
+          </Card.Content>
+        </Card>
       </View>
 
-      <Text style={styles.recomment}>{recommendMessage}</Text>
+      <Card mode="outlined" style={styles.chartCard}>
+        <Card.Content>
+          {/* <Text variant="labelMedium">오늘의 점심은</Text> */}
+          <Text variant="headlineSmall" style={{ color: "blue" }}>
+            {recommendMessage}
+          </Text>
+        </Card.Content>
+      </Card>
 
       {recommendMessage ? (
-        <Button title="다시추천받기" onPress={recommend} />
+        <Button
+          mode="contained"
+          onPress={recommend}
+          style={styles.recommendButton}
+        >
+          다시추천받기
+        </Button>
       ) : (
-        <Button title="음식추천받기" onPress={recommend} />
+        <Button
+          mode="contained"
+          onPress={recommend}
+          style={styles.recommendButton}
+        >
+          음식추천받기
+        </Button>
       )}
     </View>
   );

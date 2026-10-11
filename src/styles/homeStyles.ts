@@ -20,8 +20,7 @@ export const styles = StyleSheet.create({
   },
 
   message: {
-    fontSize: 23,
-    padding: -3,
+    fontSize: 20,
   },
 
   recomment: {
@@ -32,7 +31,25 @@ export const styles = StyleSheet.create({
 
   input: {
     width: 200,
-    borderWidth: 1,
-    padding: 10,
+    // borderWidth: 1,
+    // padding: 10,
+  },
+
+  chartCard: {
+    width: "90%",
+  },
+
+  statusRow: {
+    width: "90%",
+    flexDirection: "row",
+    gap: 8,
+  },
+
+  statusCard: {
+    flex: 1,
+  },
+
+  recommendButton: {
+    borderRadius: 6,
   },
 });
