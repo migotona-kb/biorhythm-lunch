@@ -9,6 +9,7 @@ A mobile app that recommends lunch based on your daily biorhythm.
 - Expo Router
 - AsyncStorage
 - React Native Gifted Charts
+- Material Design using React Native Paper
 
 ## Features
 - Birth date input
